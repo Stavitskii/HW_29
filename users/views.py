@@ -1,16 +1,18 @@
-import json
-
 from django.core.paginator import Paginator
 from django.http import JsonResponse
-from django.shortcuts import render
-from django.utils.decorators import method_decorator
-from django.views.decorators.csrf import csrf_exempt
-from django.views.generic import ListView, CreateView
+
+from django.views.generic import ListView
 from rest_framework.generics import CreateAPIView
+from rest_framework.viewsets import ModelViewSet
 
 from e_store import settings
 from users.models import User, Location
-from users.serializers import UserCreateSerializer
+from users.serializers import UserCreateSerializer, LocationSerializer
+
+
+class LocationViewSet(ModelViewSet):
+    queryset = Location.objects.all()
+    serializer_class = LocationSerializer
 
 
 class UserListView(ListView):
