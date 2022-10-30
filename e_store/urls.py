@@ -2,7 +2,6 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import SimpleRouter
-
 from ads.views import *
 from e_store import settings
 from users.views import LocationViewSet
