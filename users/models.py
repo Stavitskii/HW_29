@@ -19,9 +19,9 @@ class UserRoles:
     ADMIN = 'admin'
     MODERATOR = 'moderator'
     choices = (
-        ("Пользователь", USER),
-        ("Админ", ADMIN),
-        ("Модератор", MODERATOR)
+        (USER, "Пользователь"),
+        (ADMIN, "Админ"),
+        (MODERATOR, "Модератор")
     )
 
 
