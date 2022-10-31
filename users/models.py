@@ -31,7 +31,7 @@ class User(models.Model):
     username = models.CharField(max_length=20, unique=True)
     password = models.CharField(max_length=30)
     role = models.CharField(choices=UserRoles.choices, default='member', max_length=60)
-    age = models.PositiveIntegerField()
+    age = models.PositiveIntegerField(null=True)
     location = models.ManyToManyField(Location)
 
     class Meta:
