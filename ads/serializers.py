@@ -19,6 +19,13 @@ class AdDetailSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
+class AdUpdateSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Ad
+        fields = "__all__"
+
+
 class SelectionCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Selection
