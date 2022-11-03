@@ -5,9 +5,11 @@ from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView, ListView
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView
+from rest_framework.permissions import IsAuthenticated
+
 from ads.models import Category, Ad
-from ads.serializers import AdListSerializer
+from ads.serializers import AdListSerializer, AdDetailSerializer
 from users.models import User
 
 
@@ -169,3 +171,7 @@ class AdUploadImageView(UpdateView):
 #                              "address": ad.address,
 #                              "is_published": ad.is_published}, safe=False,
 #                             json_dumps_params={'ensure_ascii': False})
+class AdDetailView(RetrieveAPIView):
+    queryset = Ad.objects.all()
+    serializer_class = AdDetailSerializer
+    permission_classes = [IsAuthenticated]
