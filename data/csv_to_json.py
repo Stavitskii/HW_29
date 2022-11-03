@@ -29,8 +29,9 @@ def convert_file(csv_file, json_file, model_name):
                 row['price'] = int(row['price'])
             if 'age' in row:
                 row['age'] = int(row['age'])
-            if 'location_id' in row:
-                del row['location_id']
+            if 'location' in row:
+                row['location'] = [int(row['location'])]
+
 
 
             to_add['fields'] = row

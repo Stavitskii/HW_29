@@ -156,16 +156,16 @@ class AdUploadImageView(UpdateView):
                             json_dumps_params={'ensure_ascii': False})
 
 
-class AdDetailView(DetailView):
-    model = Ad
-
-    def get(self, request, *args, **kwargs):
-        ad = self.get_object()
-        return JsonResponse({"id": ad.id,
-                             "name": ad.name,
-                             "author": ad.author,
-                             "price": ad.price,
-                             "description": ad.description,
-                             "address": ad.address,
-                             "is_published": ad.is_published}, safe=False,
-                            json_dumps_params={'ensure_ascii': False})
+# class AdDetailView(DetailView):
+#     model = Ad
+#
+#     def get(self, request, *args, **kwargs):
+#         ad = self.get_object()
+#         return JsonResponse({"id": ad.id,
+#                              "name": ad.name,
+#                              "author": ad.author,
+#                              "price": ad.price,
+#                              "description": ad.description,
+#                              "address": ad.address,
+#                              "is_published": ad.is_published}, safe=False,
+#                             json_dumps_params={'ensure_ascii': False})
