@@ -9,6 +9,7 @@ from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView,
 from rest_framework.permissions import IsAuthenticated
 
 from ads.models import Category, Ad, Selection
+from ads.permissions import IsOwnerOrStaff
 from ads.serializers import AdListSerializer, AdDetailSerializer, SelectionCreateSerializer, SelectionUpdateSerializer, \
     SelectionListSerializer, SelectionDetailSerializer, SelectionDeleteSerializer
 from users.models import User
@@ -181,11 +182,13 @@ class AdDetailView(RetrieveAPIView):
 class SelectionCreateView(CreateAPIView):
     queryset = Selection.objects.all()
     serializer_class = SelectionCreateSerializer
+    permission_classes = [IsAuthenticated]
 
 
 class SelectionUpdateView(UpdateAPIView):
     queryset = Selection.objects.all()
     serializer_class = SelectionUpdateSerializer
+    permission_classes = [IsAuthenticated, IsOwnerOrStaff]
 
 
 class SelectionListView(ListAPIView):
@@ -201,3 +204,4 @@ class SelectionDetailView(RetrieveAPIView):
 class SelectionDeleteView(DestroyAPIView):
     queryset = Selection.objects.all()
     serializer_class = SelectionDeleteSerializer
+    permission_classes = [IsAuthenticated]
